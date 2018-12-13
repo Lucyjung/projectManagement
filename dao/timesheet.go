@@ -35,17 +35,26 @@ func Connect() {
 
 }
 
-// QueryProject Test
-func QueryProject(id int) mdl.Project {
+// QueryProjects Test
+func QueryProjects() []mdl.Project {
 
-	var prj mdl.Project
-	err := DB.QueryRow("SELECT project_id,project_name FROM project WHERE project_id=?", id).Scan(&prj.ProjectID, &prj.ProjectName)
+	var prjs []mdl.Project
+	rows, err := DB.Query("SELECT project_id,project_name FROM project WHERE project_status=?", 1)
 
 	if err != nil {
 		panic(err.Error()) // proper error handling instead of panic in your app
 	}
 
+	for rows.Next() {
+		var prj mdl.Project
+		err = rows.Scan(&prj.ProjectID, &prj.ProjectName)
+		if err != nil {
+			panic(err.Error())
+		}
+		prjs = append(prjs, prj)
+	}
+
 	//log.Println(prj.ProjectID)
 	//log.Println(prj.ProjectName)
-	return prj
+	return prjs
 }

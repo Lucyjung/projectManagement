@@ -15,7 +15,7 @@ func main() {
 
 	fs := http.FileServer(http.Dir("view"))
 	http.Handle("/", fs)
-	http.HandleFunc("/bar", ctl.TestController)
+	http.HandleFunc("/bar", ctl.FindAllProjects)
 
 	log.Println("Listening...")
 
