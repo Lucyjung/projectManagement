@@ -40,4 +40,4 @@ $go run app.go
     Schema for database 
 - view 
     Frontend code -> javascript & html 
-app.go : Main function for this app 
+- app.go : Main function for this app 
