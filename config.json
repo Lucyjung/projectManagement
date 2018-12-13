@@ -1,0 +1,5 @@
+{
+    "DBUser": "tpadmin",
+    "DBPass": "tpadmin",
+    "DBServer": "10.164.232.200:3306"
+}
